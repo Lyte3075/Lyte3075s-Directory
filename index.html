@@ -1,1 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07100b">
+  <meta name="description" content="Lyte3075's corner of the internet. Projects, experiments, and things built with curiosity.">
+  <title>Lyte3075 // Directory</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
 
+  <header class="topbar shell">
+    <a class="brand" href="#home" aria-label="Lyte3075 home"><span class="brand-mark">L<span>_</span></span><span>LYTE<span class="muted">3075</span></span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#projects">/projects</a><a href="#about">/about</a><a href="#links">/links</a>
+    </nav>
+    <a class="status-pill" href="#projects"><span class="status-dot"></span> SYSTEM ONLINE</a>
+  </header>
+
+  <main class="shell" id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="prompt-mark">root@lyte:~$</span> whoami <span class="cursor">▌</span></p>
+        <p class="hero-kicker">INDEPENDENT BUILDER · DIGITAL EXPLORER</p>
+        <h1>Hey, I'm <span class="gradient-text">Lyte</span><span class="green">.</span><br>Welcome to my<br><span class="outline-text">little corner</span><br>of the internet<span class="green">_</span></h1>
+        <p class="hero-description">I build websites, experiments, tools, games, and other things that probably started with “wait, what if…?” Browse the projects, poke around, and see what’s running.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects"><span>⌘</span> Explore projects <span class="button-arrow">↘</span></a>
+          <a class="button button-ghost" href="https://github.com/Lyte3075" target="_blank" rel="noreferrer">View GitHub ↗</a>
+        </div>
+        <div class="hero-meta"><span><i class="tiny-dot"></i> Curious by default</span><span>Built with determination <span class="heart">♥</span></span></div>
+      </div>
+      <div class="terminal-card panel">
+        <div class="panel-top"><div class="window-dots"><i></i><i></i><i></i></div><span>lyte@directory — bash</span><span class="panel-top-right">⌁ 01</span></div>
+        <div class="terminal-content" aria-label="Decorative terminal">
+          <p class="terminal-muted">Last login: whenever the idea arrived</p>
+          <p><span class="prompt">lyte@web</span>:<span class="path">~</span>$ ./start-something.sh</p>
+          <p class="terminal-success">[ OK ] curiosity loaded</p>
+          <p class="terminal-success">[ OK ] creativity detected</p>
+          <p class="terminal-success">[ OK ] bugs becoming features</p>
+          <p class="terminal-spacer"></p>
+          <p><span class="prompt">lyte@web</span>:<span class="path">~</span>$ ls ./projects</p>
+          <div class="terminal-files"><span>hyper-pop/</span><span>singulax/</span><span>skios/</span><span>more-ideas/</span></div>
+          <p><span class="prompt">lyte@web</span>:<span class="path">~</span>$ <span class="cursor">▌</span></p>
+          <div class="terminal-orbit" aria-hidden="true"><span>✳</span><i></i><b></b></div>
+        </div>
+        <div class="terminal-footer"><span><i class="tiny-dot"></i> all systems nominal</span><span>UTF-8 · 100%</span></div>
+      </div>
+      <div class="hero-decoration decor-a" aria-hidden="true">✳</div>
+      <div class="hero-decoration decor-b" aria-hidden="true">⌘</div>
+    </section>
+
+    <section class="stats-grid" aria-label="About this directory">
+      <div class="stat panel"><span class="stat-icon">⌘</span><span class="stat-label">CURRENT MODE</span><strong>Building stuff</strong><span class="stat-note">one idea at a time</span></div>
+      <div class="stat panel"><span class="stat-icon">⌁</span><span class="stat-label">MAIN INGREDIENT</span><strong>Curiosity</strong><span class="stat-note">with a dash of chaos</span></div>
+      <div class="stat panel"><span class="stat-icon">↗</span><span class="stat-label">DESTINATION</span><strong>What's next?</strong><span class="stat-note">always another project</span></div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 // THE WORKBENCH</p><h2>Projects<span class="green">.exe</span></h2><p class="section-description">A few corners of my digital universe. Pick a door.</p></div>
+        <span class="section-count" id="project-count">04 ENTRIES</span>
+      </div>
+      <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="project-search" type="search" placeholder="Search projects, tags, or ideas..." aria-label="Search projects"><kbd>/</kbd></div>
+      <div class="project-grid" id="project-grid" aria-live="polite"></div>
+      <p class="empty-state" id="empty-state" hidden>No matching projects. Try another search term <span>↻</span></p>
+    </section>
+
+    <section class="about-grid section" id="about">
+      <article class="about-card panel">
+        <p class="eyebrow">02 // THE HUMAN BEHIND THE SCREEN</p>
+        <h2>A little about <span class="green">me.</span></h2>
+        <p class="about-lead">I'm Lyte3075, a curious builder who likes turning ideas into things you can actually click, use, and explore.</p>
+        <p>I enjoy web development, experimenting with code, making games and tools, and finding creative ways to make technology more fun. This directory is the launchpad for my projects, big and small.</p>
+        <div class="tag-row"><span>#webdev</span><span>#creative-coding</span><span>#experiments</span><span>#games</span></div>
+      </article>
+      <article class="now-card panel">
+        <p class="eyebrow">03 // CURRENTLY IN MEMORY</p>
+        <h3><span class="live-pulse"></span> What's on my radar</h3>
+        <div class="now-item"><span class="now-icon">▤</span><div><strong>Building the web</strong><p>Interactive websites and useful little tools.</p></div><span class="now-arrow">↗</span></div>
+        <div class="now-item"><span class="now-icon">⌘</span><div><strong>Learning by making</strong><p>Trying ideas, breaking things, improving them.</p></div><span class="now-arrow">↗</span></div>
+        <div class="now-item"><span class="now-icon">✳</span><div><strong>Next big idea</strong><p>Currently compiling… check back soon.</p></div><span class="now-arrow">↗</span></div>
+        <div class="now-footer"><span>STATUS: ALWAYS EXPERIMENTING</span><span class="blinking">●</span></div>
+      </article>
+    </section>
+
+    <section class="section links-section" id="links">
+      <div class="section-heading"><div><p class="eyebrow">04 // OPEN CONNECTIONS</p><h2>Find me <span class="green">elsewhere.</span></h2></div></div>
+      <div class="link-grid">
+        <a class="link-card panel" href="https://github.com/Lyte3075" target="_blank" rel="noreferrer"><span class="link-icon">⌘</span><span><strong>GitHub</strong><small>Code, commits & experiments</small></span><span class="link-arrow">↗</span></a>
+        <a class="link-card panel" href="https://hyper-pop.pntr.dev/" target="_blank" rel="noreferrer"><span class="link-icon">✳</span><span><strong>Hyper-Pop</strong><small>A playground for the curious</small></span><span class="link-arrow">↗</span></a>
+        <a class="link-card panel" href="https://lyte3075.github.io/SingulaX/" target="_blank" rel="noreferrer"><span class="link-icon">λ</span><span><strong>SingulaX</strong><small>Language & IDE experiments</small></span><span class="link-arrow">↗</span></a>
+      </div>
+    </section>
+
+    <section class="end-terminal panel">
+      <div class="end-prompt"><span class="prompt">lyte@directory</span>:<span class="path">~</span>$ echo $NEXT_BIG_IDEA</div>
+      <p>Something cool is always <span class="green">loading<span class="ellipsis">...</span></span></p>
+      <a href="https://github.com/Lyte3075" target="_blank" rel="noreferrer">Follow the commits <span>↗</span></a>
+      <div class="end-grid" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <footer class="footer shell"><a class="brand footer-brand" href="#home"><span class="brand-mark">L<span>_</span></span><span>LYTE<span class="muted">3075</span></span></a><span>Made with <span class="heart">♥</span> and determination.</span><a href="#home">BACK TO TOP ↑</a><span class="footer-copy">© <span id="year"></span> LYTE3075</span></footer>
+</body>
+</html>
