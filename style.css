@@ -234,3 +234,42 @@ kbd { border: 1px solid #31543b; border-radius: 4px; padding: 1px 6px; font: 10p
 .link-icon img { display: block; width: 25px; height: 25px; object-fit: contain; }
 .project-symbol { overflow: hidden; padding: 5px; }
 .project-symbol img { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 4px; }
+
+
+/* Clean fallback when a project screenshot has not been added yet. */
+.project-preview-frame .image-card-placeholder {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  color: #8da494;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center, rgba(32, 100, 58, .28), transparent 65%),
+    linear-gradient(135deg, #09160e, #07100b);
+}
+.image-card-placeholder .placeholder-symbol {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  color: var(--green);
+  font-size: 25px;
+  box-shadow: 0 0 25px rgba(101,255,154,.08);
+  animation: float-in .8s both;
+}
+.image-card-placeholder .placeholder-title {
+  color: var(--text);
+  font: 500 14px var(--mono);
+  letter-spacing: 1px;
+}
+.image-card-placeholder small {
+  color: #6f8d78;
+  font: 10px var(--mono);
+}
