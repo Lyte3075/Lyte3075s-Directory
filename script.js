@@ -9,7 +9,7 @@ const PROJECTS = [
     description: "A playful digital playground packed with web tools, games, experiments, and curious little discoveries.",
     url: "https://hyper-pop.pntr.dev/",
     icon: "assets/icons/hyperpop-icon.svg",
-    image: "assets/images/image.png",
+    image: "assets/images/hyperpop-thumbnail.png",
     imageAlt: "Hyper-Pop project preview",
     type: "WEB PLAYGROUND",
     tags: ["Website", "Tools", "Games"]
@@ -19,7 +19,7 @@ const PROJECTS = [
     description: "An evolving programming-language and IDE project exploring approachable syntax, creative coding, and 3D ideas.",
     url: "https://lyte3075.github.io/SingulaX/",
     icon: "assets/icons/singulax-icon.png",
-    image: "assets/images/image.png",
+    image: "assets/images/singulax-thumbnail.png",
     imageAlt: "SingulaX project preview",
     type: "LANGUAGE / IDE",
     tags: ["JavaScript", "IDE", "Learning"]
