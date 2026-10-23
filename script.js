@@ -57,7 +57,7 @@ function initDirectory() {
       preview.addEventListener("error", function () {
         const placeholder = document.createElement("div");
         placeholder.className = "image-card-placeholder";
-        placeholder.innerHTML = '<span class="placeholder-symbol">▧</span><span>PREVIEW UNAVAILABLE</span><small>Add a screenshot in assets/images</small>';
+        placeholder.innerHTML = '<span class="placeholder-symbol">✳</span><span class="placeholder-title">' + (project.title || "PROJECT") + '</span><small>Project preview</small>';
         frame.replaceChildren(placeholder);
       }, { once: true });
       frame.append(preview);
