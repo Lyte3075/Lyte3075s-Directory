@@ -9,7 +9,7 @@ const PROJECTS = [
     title: "Hyper-Pop",
     description: "A playful digital playground packed with web tools, games, experiments, and curious little discoveries.",
     url: "https://hyper-pop.pntr.dev/",
-    iconImage: "assets/icons/hyperpop-icon.svg",
+    icon: "assets/icons/hyperpop-icon.svg",
     type: "WEB PLAYGROUND",
     tags: ["Website", "Tools", "Games"],
     featured: true
@@ -18,29 +18,29 @@ const PROJECTS = [
     title: "SingulaX",
     description: "An evolving programming-language and IDE project exploring approachable syntax, creative coding, and 3D ideas.",
     url: "https://lyte3075.github.io/SingulaX/",
-    iconImage: "assets/icons/singulax-icon.png",
+    icon: "assets/icons/singulax-icon.png",
     type: "LANGUAGE / IDE",
     tags: ["JavaScript", "IDE", "Learning"],
     featured: true
   }
 ];
 
-// Add, remove, or rearrange these visual cards. Use any image URL, or a path
-// to an image in this repository (for example: "assets/images/my-screenshot.png").
-// Leave image as an empty string to show a tidy editable placeholder.
+// Add, remove, or rearrange these visual cards. Use paths to images in assets/images/
+// (for example: "assets/images/hyperpop-preview.png") or a full image URL.
+// The image paths below point to the image currently in your assets/images folder.
 const IMAGE_CARDS = [
   {
     title: "Hyper-Pop",
     caption: "A playground for the curious",
-    image: "",
-    alt: "Choose a screenshot or image for Hyper-Pop",
+    image: "assets/images/image.png",
+    alt: "Hyper-Pop project image",
     url: "https://hyper-pop.pntr.dev/"
   },
   {
     title: "SingulaX",
     caption: "Language and IDE experiments",
-    image: "",
-    alt: "Choose a screenshot or image for SingulaX",
+    image: "assets/images/image.png",
+    alt: "SingulaX project image",
     url: "https://lyte3075.github.io/SingulaX/"
   }
 ];
@@ -65,9 +65,9 @@ function createProjectCard(project, index) {
 
   const icon = document.createElement("span");
   icon.className = "project-symbol";
-  if (project.iconImage) {
+  if (project.icon && /\.(svg|png|jpe?g|webp|gif)$/i.test(project.icon)) {
     const iconImage = document.createElement("img");
-    iconImage.src = project.iconImage;
+    iconImage.src = project.icon;
     iconImage.alt = "";
     iconImage.loading = "lazy";
     icon.append(iconImage);
@@ -131,7 +131,7 @@ function renderImageCards() {
     } else {
       const placeholder = document.createElement("div");
       placeholder.className = "image-card-placeholder";
-      placeholder.innerHTML = '<span class="placeholder-symbol">▧</span><span>YOUR IMAGE GOES HERE</span><small>Set the image field in script.js</small>';
+      placeholder.innerHTML = '<span class="placeholder-symbol">▧</span><span>IMAGE NOT FOUND</span><small>Check the image path in script.js</small>';
       frame.append(placeholder);
     }
 
