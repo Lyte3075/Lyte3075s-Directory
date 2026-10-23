@@ -211,3 +211,13 @@ kbd { border: 1px solid #31543b; border-radius: 4px; padding: 1px 6px; font: 10p
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+
+/* GitHub profile picture in the About section */
+.profile-heading { display: flex; align-items: center; gap: 17px; margin-bottom: 20px; }
+.profile-heading .eyebrow { margin: 0 0 7px; }
+.profile-avatar { display: block; width: 76px; height: 76px; flex: 0 0 76px; object-fit: cover; border: 2px solid var(--green); border-radius: 50%; background: var(--panel-strong); box-shadow: 0 0 0 5px #65ff9a0d, 0 0 25px #65ff9a24; transition: transform .35s ease, box-shadow .35s ease; }
+.profile-avatar:hover { transform: rotate(-7deg) scale(1.06); box-shadow: 0 0 0 7px #65ff9a12, 0 0 32px #65ff9a45; }
+.profile-handle { color: #b7d9c0; font: 11px var(--mono); }
+.profile-online { margin-left: 8px; color: var(--green); font-size: 9px; letter-spacing: .7px; }
+@media (max-width: 560px) { .profile-avatar { width: 64px; height: 64px; flex-basis: 64px; } .profile-heading { gap: 13px; } }
