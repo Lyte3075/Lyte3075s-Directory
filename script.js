@@ -10,6 +10,9 @@ const PROJECTS = [
     description: "A playful digital playground packed with web tools, games, experiments, and curious little discoveries.",
     url: "https://hyper-pop.pntr.dev/",
     icon: "assets/icons/hyperpop-icon.svg",
+    image: "assets/images/image.png",
+    imageAlt: "Hyper-Pop project preview",
+    imageCaption: "A playground for the curious",
     type: "WEB PLAYGROUND",
     tags: ["Website", "Tools", "Games"],
     featured: true
@@ -19,31 +22,18 @@ const PROJECTS = [
     description: "An evolving programming-language and IDE project exploring approachable syntax, creative coding, and 3D ideas.",
     url: "https://lyte3075.github.io/SingulaX/",
     icon: "assets/icons/singulax-icon.png",
+    image: "assets/images/image.png",
+    imageAlt: "SingulaX project preview",
+    imageCaption: "Language and IDE experiments",
     type: "LANGUAGE / IDE",
     tags: ["JavaScript", "IDE", "Learning"],
     featured: true
   }
 ];
 
-// Add, remove, or rearrange these visual cards. Use paths to images in assets/images/
-// (for example: "assets/images/hyperpop-preview.png") or a full image URL.
-// The image paths below point to the image currently in your assets/images folder.
-const IMAGE_CARDS = [
-  {
-    title: "Hyper-Pop",
-    caption: "A playground for the curious",
-    image: "assets/images/image.png",
-    alt: "Hyper-Pop project image",
-    url: "https://hyper-pop.pntr.dev/"
-  },
-  {
-    title: "SingulaX",
-    caption: "Language and IDE experiments",
-    image: "assets/images/image.png",
-    alt: "SingulaX project image",
-    url: "https://lyte3075.github.io/SingulaX/"
-  }
-];
+// Image cards are generated from PROJECTS, so each preview automatically uses
+// the same title and URL as its matching project info card. Edit the image,
+// imageAlt, and imageCaption fields inside PROJECTS to customize a preview.
 
 const projectGrid = document.querySelector("#project-grid");
 const imageCardGrid = document.querySelector("#image-card-grid");
@@ -112,38 +102,48 @@ function createProjectCard(project, index) {
 // Draw only the projects that match the search box.
 // Build the image showcase separately from the searchable project list.
 function renderImageCards() {
-  imageCardGrid.replaceChildren(...IMAGE_CARDS.map((item, index) => {
+  const imageProjects = PROJECTS.filter((project) => project.image);
+
+  imageCardGrid.replaceChildren(...imageProjects.map((project, index) => {
+    // Use the exact same destination as the matching project info card.
     const card = document.createElement("a");
     card.className = "image-card";
-    card.href = item.url || "#projects";
-    card.target = item.url ? "_blank" : "_self";
+    card.href = project.url;
+    card.target = "_blank";
     card.rel = "noreferrer";
+    card.setAttribute("aria-label", `Open ${project.title} project`);
     card.style.animationDelay = `${index * 80}ms`;
 
     const frame = document.createElement("div");
     frame.className = "image-card-frame";
-    if (item.image) {
-      const image = document.createElement("img");
-      image.src = item.image;
-      image.alt = item.alt || item.title;
-      image.loading = "lazy";
-      frame.append(image);
-    } else {
-      const placeholder = document.createElement("div");
-      placeholder.className = "image-card-placeholder";
-      placeholder.innerHTML = '<span class="placeholder-symbol">▧</span><span>IMAGE NOT FOUND</span><small>Check the image path in script.js</small>';
-      frame.append(placeholder);
-    }
+
+    const placeholder = document.createElement("div");
+    placeholder.className = "image-card-placeholder";
+    placeholder.innerHTML = '<span class="placeholder-symbol">▧</span><span>PREVIEW UNAVAILABLE</span><small>Add a real image path in PROJECTS inside script.js</small>';
+
+    const image = document.createElement("img");
+    image.src = project.image;
+    image.alt = project.imageAlt || `${project.title} preview`;
+    image.loading = "lazy";
+    image.addEventListener("error", () => {
+      image.remove();
+      frame.replaceChildren(placeholder);
+    }, { once: true });
+    frame.append(image);
 
     const details = document.createElement("div");
     details.className = "image-card-details";
+
     const title = document.createElement("strong");
-    title.textContent = item.title;
+    title.textContent = project.title;
+
     const caption = document.createElement("span");
-    caption.textContent = item.caption || "Selected visual";
+    caption.textContent = project.imageCaption || project.description;
+
     const arrow = document.createElement("span");
     arrow.className = "image-card-arrow";
     arrow.textContent = "↗";
+
     details.append(title, caption, arrow);
     card.append(frame, details);
     return card;
