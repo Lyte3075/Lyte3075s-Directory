@@ -9,7 +9,7 @@ const PROJECTS = [
     title: "Hyper-Pop",
     description: "A playful digital playground packed with web tools, games, experiments, and curious little discoveries.",
     url: "https://hyper-pop.pntr.dev/",
-    icon: "✳",
+    iconImage: "assets/icons/hyperpop-icon.svg",
     type: "WEB PLAYGROUND",
     tags: ["Website", "Tools", "Games"],
     featured: true
@@ -18,32 +18,35 @@ const PROJECTS = [
     title: "SingulaX",
     description: "An evolving programming-language and IDE project exploring approachable syntax, creative coding, and 3D ideas.",
     url: "https://lyte3075.github.io/SingulaX/",
-    icon: "λ",
+    iconImage: "assets/icons/singulax-icon.png",
     type: "LANGUAGE / IDE",
     tags: ["JavaScript", "IDE", "Learning"],
     featured: true
+  }
+];
+
+// Add, remove, or rearrange these visual cards. Use any image URL, or a path
+// to an image in this repository (for example: "assets/images/my-screenshot.png").
+// Leave image as an empty string to show a tidy editable placeholder.
+const IMAGE_CARDS = [
+  {
+    title: "Hyper-Pop",
+    caption: "A playground for the curious",
+    image: "",
+    alt: "Choose a screenshot or image for Hyper-Pop",
+    url: "https://hyper-pop.pntr.dev/"
   },
   {
-    title: "SkiOS",
-    description: "A web-based desktop environment concept with windows, apps, themes, and a desktop-inspired interface.",
-    url: "https://github.com/Lyte3075/SkiOS",
-    icon: "▦",
-    type: "WEB OS",
-    tags: ["HTML", "UI", "Desktop"],
-    featured: false
-  },
-  {
-    title: "TypeX",
-    description: "A custom keyboard-app concept focused on personalization, useful typing features, and a flexible design.",
-    url: "https://github.com/Lyte3075",
-    icon: "⌨",
-    type: "APP CONCEPT",
-    tags: ["Keyboard", "Mobile", "Design"],
-    featured: false
+    title: "SingulaX",
+    caption: "Language and IDE experiments",
+    image: "",
+    alt: "Choose a screenshot or image for SingulaX",
+    url: "https://lyte3075.github.io/SingulaX/"
   }
 ];
 
 const projectGrid = document.querySelector("#project-grid");
+const imageCardGrid = document.querySelector("#image-card-grid");
 const searchInput = document.querySelector("#project-search");
 const projectCount = document.querySelector("#project-count");
 const emptyState = document.querySelector("#empty-state");
@@ -62,8 +65,16 @@ function createProjectCard(project, index) {
 
   const icon = document.createElement("span");
   icon.className = "project-symbol";
-  icon.setAttribute("aria-hidden", "true");
-  icon.textContent = project.icon;
+  if (project.iconImage) {
+    const iconImage = document.createElement("img");
+    iconImage.src = project.iconImage;
+    iconImage.alt = "";
+    iconImage.loading = "lazy";
+    icon.append(iconImage);
+  } else {
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = project.icon || "✳";
+  }
 
   const type = document.createElement("span");
   type.className = "project-type";
@@ -96,6 +107,47 @@ function createProjectCard(project, index) {
   bottom.append(tags, open);
   card.append(top, title, description, bottom);
   return card;
+}
+
+// Draw only the projects that match the search box.
+// Build the image showcase separately from the searchable project list.
+function renderImageCards() {
+  imageCardGrid.replaceChildren(...IMAGE_CARDS.map((item, index) => {
+    const card = document.createElement("a");
+    card.className = "image-card";
+    card.href = item.url || "#projects";
+    card.target = item.url ? "_blank" : "_self";
+    card.rel = "noreferrer";
+    card.style.animationDelay = `${index * 80}ms`;
+
+    const frame = document.createElement("div");
+    frame.className = "image-card-frame";
+    if (item.image) {
+      const image = document.createElement("img");
+      image.src = item.image;
+      image.alt = item.alt || item.title;
+      image.loading = "lazy";
+      frame.append(image);
+    } else {
+      const placeholder = document.createElement("div");
+      placeholder.className = "image-card-placeholder";
+      placeholder.innerHTML = '<span class="placeholder-symbol">▧</span><span>YOUR IMAGE GOES HERE</span><small>Set the image field in script.js</small>';
+      frame.append(placeholder);
+    }
+
+    const details = document.createElement("div");
+    details.className = "image-card-details";
+    const title = document.createElement("strong");
+    title.textContent = item.title;
+    const caption = document.createElement("span");
+    caption.textContent = item.caption || "Selected visual";
+    const arrow = document.createElement("span");
+    arrow.className = "image-card-arrow";
+    arrow.textContent = "↗";
+    details.append(title, caption, arrow);
+    card.append(frame, details);
+    return card;
+  }));
 }
 
 // Draw only the projects that match the search box.
@@ -134,4 +186,5 @@ document.addEventListener("keydown", (event) => {
 document.querySelector("#year").textContent = new Date().getFullYear();
 
 // Start the directory.
+renderImageCards();
 renderProjects();
