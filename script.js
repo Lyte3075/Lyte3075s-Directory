@@ -31,12 +31,7 @@ const PROJECTS = [
   }
 ];
 
-// Image cards are generated from PROJECTS, so each preview automatically uses
-// the same title and URL as its matching project info card. Edit the image,
-// imageAlt, and imageCaption fields inside PROJECTS to customize a preview.
-
 const projectGrid = document.querySelector("#project-grid");
-const imageCardGrid = document.querySelector("#image-card-grid");
 const searchInput = document.querySelector("#project-search");
 const projectCount = document.querySelector("#project-count");
 const emptyState = document.querySelector("#empty-state");
@@ -49,6 +44,26 @@ function createProjectCard(project, index) {
   card.target = "_blank";
   card.rel = "noreferrer";
   card.style.animationDelay = `${Math.min(index, 8) * 65}ms`;
+
+  // The preview image is part of this same clickable project info card.
+  if (project.image) {
+    const frame = document.createElement("div");
+    frame.className = "project-preview-frame";
+    const placeholder = document.createElement("div");
+    placeholder.className = "image-card-placeholder";
+    placeholder.innerHTML = '<span class="placeholder-symbol">▧</span><span>PREVIEW UNAVAILABLE</span><small>Set a valid image path in PROJECTS</small>';
+
+    const preview = document.createElement("img");
+    preview.src = project.image;
+    preview.alt = project.imageAlt || `${project.title} preview`;
+    preview.loading = "lazy";
+    preview.addEventListener("error", () => {
+      preview.remove();
+      frame.replaceChildren(placeholder);
+    }, { once: true });
+    frame.append(preview);
+    card.append(frame);
+  }
 
   const top = document.createElement("div");
   top.className = "project-card-top";
@@ -100,57 +115,6 @@ function createProjectCard(project, index) {
 }
 
 // Draw only the projects that match the search box.
-// Build the image showcase separately from the searchable project list.
-function renderImageCards() {
-  const imageProjects = PROJECTS.filter((project) => project.image);
-
-  imageCardGrid.replaceChildren(...imageProjects.map((project, index) => {
-    // Use the exact same destination as the matching project info card.
-    const card = document.createElement("a");
-    card.className = "image-card";
-    card.href = project.url;
-    card.target = "_blank";
-    card.rel = "noreferrer";
-    card.setAttribute("aria-label", `Open ${project.title} project`);
-    card.style.animationDelay = `${index * 80}ms`;
-
-    const frame = document.createElement("div");
-    frame.className = "image-card-frame";
-
-    const placeholder = document.createElement("div");
-    placeholder.className = "image-card-placeholder";
-    placeholder.innerHTML = '<span class="placeholder-symbol">▧</span><span>PREVIEW UNAVAILABLE</span><small>Add a real image path in PROJECTS inside script.js</small>';
-
-    const image = document.createElement("img");
-    image.src = project.image;
-    image.alt = project.imageAlt || `${project.title} preview`;
-    image.loading = "lazy";
-    image.addEventListener("error", () => {
-      image.remove();
-      frame.replaceChildren(placeholder);
-    }, { once: true });
-    frame.append(image);
-
-    const details = document.createElement("div");
-    details.className = "image-card-details";
-
-    const title = document.createElement("strong");
-    title.textContent = project.title;
-
-    const caption = document.createElement("span");
-    caption.textContent = project.imageCaption || project.description;
-
-    const arrow = document.createElement("span");
-    arrow.className = "image-card-arrow";
-    arrow.textContent = "↗";
-
-    details.append(title, caption, arrow);
-    card.append(frame, details);
-    return card;
-  }));
-}
-
-// Draw only the projects that match the search box.
 function renderProjects(query = "") {
   const normalizedQuery = query.trim().toLowerCase();
   const matches = PROJECTS.filter((project) => {
@@ -186,5 +150,4 @@ document.addEventListener("keydown", (event) => {
 document.querySelector("#year").textContent = new Date().getFullYear();
 
 // Start the directory.
-renderImageCards();
 renderProjects();
