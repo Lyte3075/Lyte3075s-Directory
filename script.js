@@ -55,7 +55,7 @@ const PROFILE_LINKS = [
   },
   {
     title: "My Discord Server",
-    description: "Code, commits & experiments",
+    description: "My Discord server",
     url: "https://discord.com/invite/Tkz5WX3SNR",
     icon: "assets/icons/discord-icon.png"
   },
