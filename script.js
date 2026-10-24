@@ -26,6 +26,16 @@ const PROJECTS = [
     type: "LANGUAGE / IDE",
     tags: ["JavaScript", "IDE", "Learning"]
   },
+  {
+    title: "Con(Skill)ation",
+    description: "A skill tree/map for anything with themes, organization, and file uploading..",
+    url: "https://lyte3075.github.io/Con-Skill-ation/",
+    icon: "assets/icons/conskillation-icon.png",
+    image: "assets/images/conskillation-thumbnail.png",
+    imageAlt: "Con(Skill)ation project preview",
+    type: "TREE / MAP",
+    tags: ["Skills", "Tree", "Mapping"]
+  },
 ];
 
 // Add, edit, or remove Section 04 cards here. Each object becomes one card.
