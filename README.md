@@ -1,4 +1,4 @@
-# Lyte3075 // Directory
+# Lyte3075's Directory
 
 A personal homepage and hub for Lyte3075's websites, projects, experiments, and links.
 
