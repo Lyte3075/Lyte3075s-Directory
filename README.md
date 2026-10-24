@@ -2,7 +2,7 @@
 
 A personal homepage and hub for Lyte3075's websites, projects, experiments, and links.
 
-## **Live Sites:**
+# **Live Sites:**
 
 https://lyte3075.is-a.dev/
 https://lyte3075.is-local.org/
