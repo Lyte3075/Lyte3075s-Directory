@@ -1,6 +1,8 @@
 /* =========================================================
    LYTE3075 DIRECTORY
-   Edit PROJECTS below to add, remove, or update your featured cards.
+   SECTION 01: MY PICKS CARD MANAGEMENT
+   Add, edit, copy, or remove objects in PROJECTS below.
+   Each object creates one project card. Keep commas between objects.
    ========================================================= */
 
 const PROJECTS = [
@@ -24,6 +26,18 @@ const PROJECTS = [
     type: "LANGUAGE / IDE",
     tags: ["JavaScript", "IDE", "Learning"]
   }
+
+  // Example card. Copy this object to add another project:
+  // {
+  //   title: "My New Project",
+  //   description: "A short description of what it does.",
+  //   url: "https://example.com/",
+  //   icon: "assets/icons/github-icon.png",
+  //   image: "assets/images/my-project-thumbnail.png",
+  //   imageAlt: "My New Project preview",
+  //   type: "WEBSITE / TOOL / GAME",
+  //   tags: ["Website", "JavaScript"]
+  // }
 ];
 
 // Add, edit, or remove Section 04 cards here. Each object becomes one card.
@@ -57,7 +71,7 @@ let ALL_REPOSITORIES = [];
 let currentView = "selected";
 
 /* Make cards for links from GitHub profile fields and the profile README. */
-async function getLocalIcon(hostname) {
+function getLocalIcon(hostname) {
   const host = String(hostname || "").toLowerCase();
   if (host.includes("github.com")) return "assets/icons/github-icon.png";
   if (host.includes("discord")) return "assets/icons/discord-icon.png";
