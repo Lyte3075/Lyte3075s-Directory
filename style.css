@@ -273,3 +273,13 @@ kbd { border: 1px solid #31543b; border-radius: 4px; padding: 1px 6px; font: 10p
   color: #6f8d78;
   font: 10px var(--mono);
 }
+
+
+/* Section 01 repository view tabs */
+.project-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.project-tab { appearance: none; cursor: pointer; border: 1px solid var(--line); border-radius: 7px; padding: 9px 12px; background: #07110b9c; color: #91aa99; font: 10px var(--mono); transition: color .2s, background .2s, border-color .2s, transform .2s; }
+.project-tab:hover { color: var(--green); border-color: #65ff9a70; transform: translateY(-1px); }
+.project-tab.is-active, .project-tab[aria-selected="true"] { color: #06110a; background: var(--green); border-color: var(--green); }
+.repo-status { min-height: 18px; margin: 0 0 12px; color: #789280; font: 10px var(--mono); }
+.project-symbol img { width: 100%; height: 100%; object-fit: contain; }
+@media (max-width: 560px) { .project-tabs { display: grid; grid-template-columns: 1fr; } .project-tab { width: 100%; text-align: left; } }
