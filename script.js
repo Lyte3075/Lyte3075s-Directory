@@ -37,6 +37,19 @@ const PROFILE_LINKS = [
   },
   // Example card. Copy this object to add another link.
   // { title: "My Website", description: "My corner of the web", url: "https://example.com", icon: "assets/icons/website.svg" }
+
+  {
+    title: "YouTube",
+    description: "My YT Channel",
+    url: "https://www.youtube.com/@Lyte3075",
+    icon: "assets/icons/youtube-icon.png"
+  },
+  {
+    title: "My Discord Server",
+    description: "Code, commits & experiments",
+    url: "https://discord.com/invite/Tkz5WX3SNR",
+    icon: "assets/icons/discord-icon.png"
+  },
 ];
 
 const GITHUB_USER = "Lyte3075";
