@@ -111,7 +111,6 @@ async function loadProfileLinks() {
     });
     if (!response.ok) throw new Error("Profile request failed");
     const profile = await response.json();
-    if (profile.blog) addLink("Website", "Website listed on GitHub", profile.blog);
     if (profile.twitter_username) addLink("X / Twitter", "Social profile", "https://x.com/" + profile.twitter_username);
 
     // Public profile READMEs often contain extra social and project links.
