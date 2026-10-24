@@ -25,19 +25,17 @@ const PROJECTS = [
     imageAlt: "SingulaX project preview",
     type: "LANGUAGE / IDE",
     tags: ["JavaScript", "IDE", "Learning"]
-  }
-
-  // Example card. Copy this object to add another project:
-  // {
-  //   title: "My New Project",
-  //   description: "A short description of what it does.",
-  //   url: "https://example.com/",
-  //   icon: "assets/icons/github-icon.png",
-  //   image: "assets/images/my-project-thumbnail.png",
-  //   imageAlt: "My New Project preview",
-  //   type: "WEBSITE / TOOL / GAME",
-  //   tags: ["Website", "JavaScript"]
-  // }
+  },
+  {
+    title: "Exponential-Calc",
+    description: "A simple calculator with themes.",
+    url: "https://Lyte3075.github.io/Exponential-Calc/",
+    icon: "assets/icons/calc-icon.svg",
+    image: "assets/images/calc-thumbnail.png",
+    imageAlt: "Exponential-Calc project preview",
+    type: "CALCULATOR",
+    tags: ["Math", "Tools", "Calculator"]
+  },
 ];
 
 // Add, edit, or remove Section 04 cards here. Each object becomes one card.
@@ -49,9 +47,6 @@ const PROFILE_LINKS = [
     url: "https://github.com/Lyte3075",
     icon: "assets/icons/github-icon.png"
   },
-  // Example card. Copy this object to add another link.
-  // { title: "My Website", description: "My corner of the web", url: "https://example.com", icon: "assets/icons/website.svg" }
-
   {
     title: "YouTube",
     description: "My YT Channel",
