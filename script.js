@@ -26,16 +26,6 @@ const PROJECTS = [
     type: "LANGUAGE / IDE",
     tags: ["JavaScript", "IDE", "Learning"]
   },
-  {
-    title: "Exponential-Calc",
-    description: "A simple calculator with themes.",
-    url: "https://Lyte3075.github.io/Exponential-Calc/",
-    icon: "assets/icons/calc-icon.svg",
-    image: "assets/images/calc-thumbnail.png",
-    imageAlt: "Exponential-Calc project preview",
-    type: "CALCULATOR",
-    tags: ["Math", "Tools", "Calculator"]
-  },
 ];
 
 // Add, edit, or remove Section 04 cards here. Each object becomes one card.
