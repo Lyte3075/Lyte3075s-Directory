@@ -13,3 +13,5 @@ A personal homepage and hub for Lyte3075's websites, projects, experiments, and 
 * Cloudflare Pages: https://lyte3075.pages.dev/
 
 * Netlify: https://lyte3075.netlify.app/
+
+* Vercel: https://lyte3075.vercel.app/
