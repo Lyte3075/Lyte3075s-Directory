@@ -26,6 +26,19 @@ const PROJECTS = [
   }
 ];
 
+// Add, edit, or remove Section 04 cards here. Each object becomes one card.
+// icon can be a local image path, an image URL, or a short text symbol.
+const PROFILE_LINKS = [
+  {
+    title: "GitHub",
+    description: "Code, commits & experiments",
+    url: "https://github.com/Lyte3075",
+    icon: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+  },
+  // Example card. Copy this object to add another link.
+  // { title: "My Website", description: "My corner of the web", url: "https://example.com", icon: "assets/icons/website.svg" }
+];
+
 const GITHUB_USER = "Lyte3075";
 let ALL_REPOSITORIES = [];
 let currentView = "selected";
@@ -35,6 +48,14 @@ async function loadProfileLinks() {
   const container = document.querySelector("#profile-links");
   if (!container) return;
   const links = new Map();
+  PROFILE_LINKS.forEach(link => {
+    if (link && link.title && link.url) links.set(link.url, {
+      title: link.title,
+      description: link.description || "",
+      url: link.url,
+      iconUrl: link.icon || ""
+    });
+  });
   const addLink = (title, description, rawUrl) => {
     try {
       let value = String(rawUrl || "").trim().replace(/[),.;]+$/, "");
@@ -51,7 +72,7 @@ async function loadProfileLinks() {
       });
     } catch (_) {}
   };
-  addLink("GitHub", "Code, commits & experiments", "https://github.com/" + GITHUB_USER);
+  if (!links.has("https://github.com/" + GITHUB_USER)) addLink("GitHub", "Code, commits & experiments", "https://github.com/" + GITHUB_USER);
 
   try {
     const response = await fetch("https://api.github.com/users/" + GITHUB_USER, {
@@ -195,7 +216,7 @@ function initDirectory() {
       title: repo.name,
       description: repo.description || "A public repository by " + GITHUB_USER + ".",
       url: repo.html_url,
-      icon: "https://www.google.com/s2/favicons?domain_url=" + encodeURIComponent("https://github.com") + "&sz=64",
+      icon: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
       type: (repo.language || "REPOSITORY").toUpperCase(),
       tags: [repo.language || "GitHub", "★ " + (repo.stargazers_count || 0) + " stars"]
     };
