@@ -283,3 +283,56 @@ kbd { border: 1px solid #31543b; border-radius: 4px; padding: 1px 6px; font: 10p
 .repo-status { min-height: 18px; margin: 0 0 12px; color: #789280; font: 10px var(--mono); }
 .project-symbol img { width: 100%; height: 100%; object-fit: contain; }
 @media (max-width: 560px) { .project-tabs { display: grid; grid-template-columns: 1fr; } .project-tab { width: 100%; text-align: left; } }
+
+
+/* Distinct, unmistakable repository view tabs */
+.project-tabs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  padding: 8px !important;
+  margin: 0 0 14px !important;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid rgba(101,255,154,.24);
+  border-radius: 11px;
+  background: rgba(2,9,5,.72);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 8px 24px rgba(0,0,0,.15);
+}
+.project-tabs .project-tab {
+  appearance: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 43px !important;
+  padding: 11px 17px !important;
+  border: 1px solid transparent !important;
+  border-radius: 7px !important;
+  background: transparent !important;
+  color: #91aa99 !important;
+  font: 11px var(--mono) !important;
+  letter-spacing: .25px;
+  cursor: pointer;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease !important;
+}
+.project-tabs .project-tab:hover {
+  color: var(--green) !important;
+  border-color: rgba(101,255,154,.35) !important;
+  background: rgba(101,255,154,.08) !important;
+}
+.project-tabs .project-tab.is-active,
+.project-tabs .project-tab[aria-selected="true"] {
+  color: #041008 !important;
+  background: var(--green) !important;
+  border-color: var(--green) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 18px rgba(101,255,154,.18), inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+.project-tabs .project-tab:focus-visible { outline: 2px solid #d7ffe3; outline-offset: 3px; }
+.project-symbol img { width: 100%; height: 100%; object-fit: contain; }
+@media (max-width: 560px) {
+  .project-tabs { display: grid !important; grid-template-columns: 1fr !important; width: 100%; }
+  .project-tabs .project-tab { width: 100% !important; }
+}
