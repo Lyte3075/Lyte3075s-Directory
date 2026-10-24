@@ -6,9 +6,25 @@
   <meta name="theme-color" content="#07100b">
   <meta name="description" content="MY corner of the internet. Projects, experiments, and things built with curiosity because i was bored and didn't want to do any work.">
   <title>Lyte3075's Directory</title>
-  <link rel="icon" type="image/png" sizes="192x192" href="https://github.com/Lyte3075.png?size=192">
-  <link rel="apple-touch-icon" sizes="512x512" href="https://github.com/Lyte3075.png?size=512">
+  <link id="site-favicon" rel="icon" type="image/png" sizes="192x192" href="https://github.com/Lyte3075.png?size=192">
+  <link rel="apple-touch-icon" sizes="512x512" href="https://github.com/Lyte3075.png?size=512" onerror="this.onerror=null;this.href='assets/icons/favicon.svg'">
   <link rel="manifest" href="manifest.json">
+  <script>
+    // If GitHub's avatar cannot load, use the site's local favicon instead.
+    (() => {
+      const fallbackIcon = new URL('assets/icons/favicon.svg', document.baseURI).href;
+      const avatarUrl = 'https://github.com/Lyte3075.png?size=192';
+      const icon = document.getElementById('site-favicon');
+      const testAvatar = new Image();
+      testAvatar.onload = () => {};
+      testAvatar.onerror = () => {
+        icon.href = fallbackIcon;
+        icon.type = 'image/svg+xml';
+        icon.removeAttribute('sizes');
+      };
+      testAvatar.src = avatarUrl;
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,7 +37,7 @@
   <div class="scanlines" aria-hidden="true"></div>
 
   <header class="topbar shell">
-    <a class="brand" href="#home" aria-label="Lyte3075 home"><img class="brand-avatar" src="https://github.com/Lyte3075.png" alt="Lyte3075 profile picture" width="34" height="34"><span>LYTE<span class="muted">3075</span></span></a>
+    <a class="brand" href="#home" aria-label="Lyte3075 home"><img class="brand-avatar" src="https://github.com/Lyte3075.png" alt="Lyte3075 profile picture" width="34" height="34" onerror="this.onerror=null;this.src='assets/icons/favicon.svg'"><span>LYTE<span class="muted">3075</span></span></a>
     <nav class="nav-links" aria-label="Main navigation">
       <a href="#projects">/projects</a><a href="#about">/about</a><a href="#links">/links</a>
     </nav>
@@ -81,7 +97,7 @@
 
     <section class="about-grid section" id="about">
       <article class="about-card panel">
-        <div class="profile-heading"><img class="profile-avatar" src="https://github.com/Lyte3075.png" alt="Lyte3075 GitHub profile picture" width="76" height="76" loading="lazy"><div><p class="eyebrow">02 // THE HUMAN BEHIND THE SCREEN</p><span class="profile-handle">@Lyte3075 <span class="profile-online">● ONLINE</span></span></div></div>
+        <div class="profile-heading"><img class="profile-avatar" src="https://github.com/Lyte3075.png" alt="Lyte3075 GitHub profile picture" width="76" height="76" loading="lazy" onerror="this.onerror=null;this.src='assets/icons/favicon.svg'"><div><p class="eyebrow">02 // THE HUMAN BEHIND THE SCREEN</p><span class="profile-handle">@Lyte3075 <span class="profile-online">● ONLINE</span></span></div></div>
         <h2>A little about <span class="green">me.</span></h2>
         <p class="about-lead">I'm Lyte3075, a random dev who likes turning ideas into things you can actually click, use, and explore. Or just do anything that isn't work cuz why not.</p>
         <p>I enjoy web development, experimenting with code, making games and tools, and finding creative ways to make tech more fun. This directory is the homepage for my projects, big and small.</p>
@@ -113,6 +129,6 @@
     </section>
   </main>
 
-  <footer class="footer shell"><a class="brand footer-brand" href="#home"><img class="brand-avatar" src="https://github.com/Lyte3075.png" alt="" width="34" height="34" loading="lazy"><span>LYTE<span class="muted">3075</span></span></a><span>Made with <span class="heart">♥</span> and determination.</span><a href="#home">BACK TO TOP ↑</a><span class="footer-copy">© <span id="year"></span> LYTE3075</span></footer>
+  <footer class="footer shell"><a class="brand footer-brand" href="#home"><img class="brand-avatar" src="https://github.com/Lyte3075.png" alt="" width="34" height="34" loading="lazy" onerror="this.onerror=null;this.src='assets/icons/favicon.svg'"><span>LYTE<span class="muted">3075</span></span></a><span>Made with <span class="heart">♥</span> and determination.</span><a href="#home">BACK TO TOP ↑</a><span class="footer-copy">© <span id="year"></span> LYTE3075</span></footer>
 </body>
 </html>
