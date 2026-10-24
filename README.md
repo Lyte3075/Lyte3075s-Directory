@@ -11,3 +11,5 @@ A personal homepage and hub for Lyte3075's websites, projects, experiments, and 
 * pntr.dev: https://lyte3075.pntr.dev/
 
 * Cloudflare Pages: https://lyte3075.pages.dev/
+
+* Netlify: https://lyte3075.netlify.app/
