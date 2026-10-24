@@ -26,6 +26,89 @@ const PROJECTS = [
   }
 ];
 
+
+/* =========================================================
+   GITHUB PROFILE LINKS
+   Public GitHub profile API fields available here: blog and
+   Twitter username. The cards update when those profile
+   fields change. GitHub itself is always included.
+   ========================================================= */
+async function loadProfileLinks() {
+  const container = document.querySelector("#profile-links");
+  if (!container) return;
+
+  const links = [{
+    title: "GitHub",
+    description: "Code, commits & experiments",
+    url: "https://github.com/Lyte3075",
+    icon: "⌘"
+  }];
+
+  try {
+    const response = await fetch("https://api.github.com/users/Lyte3075", {
+      headers: { "Accept": "application/vnd.github+json" }
+    });
+    if (!response.ok) throw new Error("GitHub profile request failed");
+    const profile = await response.json();
+
+    if (profile.blog && profile.blog.trim()) {
+      let website = profile.blog.trim();
+      if (!/^https?:\/\//i.test(website)) website = "https://" + website;
+      try {
+        const parsed = new URL(website);
+        if (parsed.protocol === "https:" || parsed.protocol === "http:") {
+          links.push({
+            title: parsed.hostname.replace(/^www\./, ""),
+            description: "Website from GitHub profile",
+            url: parsed.href,
+            icon: "↗"
+          });
+        }
+      } catch (_) {}
+    }
+
+    if (profile.twitter_username) {
+      links.push({
+        title: "X / Twitter",
+        description: "Social profile linked on GitHub",
+        url: "https://twitter.com/" + encodeURIComponent(profile.twitter_username),
+        icon: "𝕏"
+      });
+    }
+
+    container.replaceChildren();
+    links.forEach(function (link) {
+      const card = document.createElement("a");
+      card.className = "link-card panel";
+      card.href = link.url;
+      card.target = "_blank";
+      card.rel = "noopener noreferrer";
+
+      const icon = document.createElement("span");
+      icon.className = "link-icon";
+      icon.textContent = link.icon;
+
+      const details = document.createElement("span");
+      const title = document.createElement("strong");
+      title.textContent = link.title;
+      const description = document.createElement("small");
+      description.textContent = link.description;
+      details.append(title, description);
+
+      const arrow = document.createElement("span");
+      arrow.className = "link-arrow";
+      arrow.textContent = "↗";
+      card.append(icon, details, arrow);
+      container.append(card);
+    });
+  } catch (error) {
+    // Keep the GitHub card available if the API is temporarily unavailable.
+    container.querySelectorAll(".profile-links-status").forEach(function (node) {
+      node.textContent = "Could not load profile links right now.";
+    });
+  }
+}
+
 function initDirectory() {
   const projectGrid = document.querySelector("#project-grid");
   const searchInput = document.querySelector("#project-search");
@@ -148,6 +231,7 @@ function initDirectory() {
 
   if (year) year.textContent = new Date().getFullYear();
   renderProjects("");
+  loadProfileLinks();
 }
 
 if (document.readyState === "loading") {
