@@ -174,7 +174,7 @@ function initDirectory() {
     top.className = "project-card-top";
     const icon = document.createElement("span");
     icon.className = "project-symbol";
-    if (project.icon && /\.(svg|png|jpe?g|webp|gif)$/i.test(project.icon)) {
+    if (project.icon && (/\.(svg|png|jpe?g|webp|gif)(\?.*)?$/i.test(project.icon) || /^https?:\/\//i.test(project.icon))) {
       const iconImage = document.createElement("img");
       iconImage.src = project.icon;
       iconImage.alt = "";
