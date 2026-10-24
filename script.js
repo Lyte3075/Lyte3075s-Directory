@@ -33,7 +33,7 @@ const PROFILE_LINKS = [
     title: "GitHub",
     description: "Code, commits & experiments",
     url: "https://github.com/Lyte3075",
-    icon: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+    icon: "assets/icons/github-icon.png"
   },
   // Example card. Copy this object to add another link.
   // { title: "My Website", description: "My corner of the web", url: "https://example.com", icon: "assets/icons/website.svg" }
@@ -44,6 +44,15 @@ let ALL_REPOSITORIES = [];
 let currentView = "selected";
 
 /* Make cards for links from GitHub profile fields and the profile README. */
+async function getLocalIcon(hostname) {
+  const host = String(hostname || "").toLowerCase();
+  if (host.includes("github.com")) return "assets/icons/github-icon.png";
+  if (host.includes("discord")) return "assets/icons/discord-icon.png";
+  if (host.includes("tiktok")) return "assets/icons/tiktok-icon.png";
+  if (host.includes("youtube") || host.includes("youtu.be")) return "assets/icons/youtube-icon.png";
+  return "";
+}
+
 async function loadProfileLinks() {
   const container = document.querySelector("#profile-links");
   if (!container) return;
@@ -68,7 +77,7 @@ async function loadProfileLinks() {
         title: title || parsed.hostname.replace(/^www\./, ""),
         description: description || parsed.hostname.replace(/^www\./, ""),
         url: parsed.href,
-        iconUrl: "https://www.google.com/s2/favicons?domain_url=" + encodeURIComponent(parsed.origin) + "&sz=64"
+        iconUrl: getLocalIcon(parsed.hostname) || ("https://www.google.com/s2/favicons?domain_url=" + encodeURIComponent(parsed.origin) + "&sz=64")
       });
     } catch (_) {}
   };
@@ -216,7 +225,7 @@ function initDirectory() {
       title: repo.name,
       description: repo.description || "A public repository by " + GITHUB_USER + ".",
       url: repo.html_url,
-      icon: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+      icon: "assets/icons/github-icon.png",
       type: (repo.language || "REPOSITORY").toUpperCase(),
       tags: [repo.language || "GitHub", "★ " + (repo.stargazers_count || 0) + " stars"]
     };
