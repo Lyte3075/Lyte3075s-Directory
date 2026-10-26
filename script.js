@@ -19,7 +19,7 @@ const PROJECTS = [
   {
     title: "SingulaX",
     description: "An evolving programming-language and IDE project exploring approachable syntax, creative coding, and 3D ideas.",
-    url: "https://lyte3075.github.io/SingulaX/",
+    url: "https://singulax.pntr.dev/",
     icon: "assets/icons/singulax-icon.png",
     image: "assets/images/singulax-thumbnail.png",
     imageAlt: "SingulaX project preview",
