@@ -27,8 +27,18 @@ const PROJECTS = [
     tags: ["JavaScript", "IDE", "Learning"]
   },
   {
+    title: "Kara's Proxy",
+    description: "A web proxy built in Vite (React).",
+    url: "https://kara-proxy.vercel.app/",
+    icon: "assets/icons/kara-proxy-icon.png",
+    image: "assets/images/kara-proxy-thumbnail.png",
+    imageAlt: "Kara's Proxy project preview",
+    type: "WEB / PROXY",
+    tags: ["Proxy", "Web", "Browsing"]
+  },
+  {
     title: "Con(Skill)ation",
-    description: "A skill tree/map for anything with themes, organization, and file uploading..",
+    description: "A skill tree/map for anything with themes, organization, and file uploading.",
     url: "https://lyte3075.github.io/Con-Skill-ation/",
     icon: "assets/icons/conskillation-icon.png",
     image: "assets/images/conskillation-thumbnail.png",
